@@ -21,6 +21,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -53,7 +54,7 @@ public class UserController extends BaseController
     @RequiresPermissions("system:user:list")
     @PostMapping("/list")
     @ResponseBody
-    public TableDataInfo list(User user)
+    public TableDataInfo list(User user,HttpServletRequest request)
     {
         startPage();
         List<User> list = userService.selectUserList(user);
